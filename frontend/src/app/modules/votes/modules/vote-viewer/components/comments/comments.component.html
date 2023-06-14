@@ -1,0 +1,22 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div *ngFor="let comment of comments$ | async">
+    <div fxLayout="column">
+      <mat-divider></mat-divider>
+      <span fxLayout="row" fxLayoutGap="0.5rem">
+        <b>{{ comment.createdBy }}</b>
+        <!-- <small>({{ comment.createdAt | date : "medium" }})</small> -->
+        <small>({{ comment.createdAt | date : "shortTime" }})</small>
+      </span>
+      <span>{{ comment.comment }}</span>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field appearance="outline" fxFlex="1 0 auto" fxLayoutGap="20px">
+      <mat-label>Comment</mat-label>
+      <input matInput type="text" [(ngModel)]="comment" />
+    </mat-form-field>
+    <button mat-mini-fab (click)="send()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</div>

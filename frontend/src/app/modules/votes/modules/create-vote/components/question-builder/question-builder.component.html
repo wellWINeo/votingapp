@@ -1,0 +1,21 @@
+<div fxLayout="column" fxGap="5vh" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Question's text</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="text"
+      placeholder="Question's title..."
+    />
+    <mat-error *ngIf="form.get('text')?.errors">Title is required!</mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="isMultipleAllowed" appearance="outline">
+    Allow multiple choices:
+  </mat-checkbox>
+
+  <options-builder
+    formControlName="options"
+    fxFlex="1 0 auto"
+  ></options-builder>
+</div>

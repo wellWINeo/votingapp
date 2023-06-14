@@ -1,0 +1,11 @@
+.results-list {
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #dddddd;
+  gap: 0.5rem;
+  height: 300px;
+  width: 400px;
+}

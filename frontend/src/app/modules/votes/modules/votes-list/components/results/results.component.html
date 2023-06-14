@@ -1,0 +1,14 @@
+<div class="container">
+  <div
+    matRipple
+    class="mat-elevation-z2 card"
+    *ngFor="let result of results$ | async"
+    [routerLink]="['/', 'votes', 'view', result.formId]"
+  >
+    <h3>{{ result.title }}</h3>
+    <ul>
+      <li *ngFor="let option of result.values">{{ option }}</li>
+    </ul>
+    <div>{{ result.createdAt | date:'medium' }}</div>
+  </div>
+</div>

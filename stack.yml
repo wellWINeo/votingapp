@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+  db:
+    image: votingapp-db:latest
+    build: ./infra/database/Dockerfile
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD_FILE=/run/secrets/PostgresPassword
+      - KEYCLOAK_DB_USER=keycloak
+      - KEYCLOAK_DB_NAME=keycloak_db
+      - VOTINGAPP_DB_USER=votingapp
+      - VOTINGAPP_DB_NAME=votingapp_db
+    secrets:
+      - PostgresPassword
+      - PostgresKeycloakPassword
+      - PostgresVotingAppPassword
+
+  keycloak:
+    image: votingaap-keycloak:latest
+    build: ./infra/keycloak/Dockerfile
+    restart: always
+    ports:
+      - 7001:8080
+    environment:
+      - KEYCLOAK_ADMIN_USER=admin
+      - KEYCLOAK_ADMIN_PASSWORD_FILE=/run/secrets/KeycloakAdminPassword
+      - KEYCLOAK_DATABASE_VENDOR=postgresql
+      - KEYCLOAK_DATABASE_HOST=db
+      - KEYCLOAK_DATABASE_PORT=5432
+      - KEYCLOAK_DATABASE_NAME=keycloak_db
+      - KEYCLOAK_DATABASE_USER=keycloak
+      - KEYCLOAK_DATABASE_PASSWORD_FILE=/run/secrets/PostgresPassword
+      - KEYCLOAK_DATABASE_SCHEMA=public
+    secrets:
+      - KeycloakAdminPassword
+      - PostgresPassword
+
+secrets:
+  PostgresPassword:
+    external: true
+  PostgresKeycloakPassword:
+    external: true
+  PostgresVotingAppPassword:
+    external: true
+
+  KeycloakAdminPassword:
+    external: true

@@ -1,0 +1,16 @@
+:host {
+  height: 100%;
+
+  .container {
+    padding: 1rem;
+
+    .question-container {
+      margin-top: 10px;
+    }
+  }
+
+  .loading-spinner {
+    width: 100%;
+    height: 100%;
+  }
+}

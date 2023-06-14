@@ -1,0 +1,11 @@
+<div
+  class="container"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  *ngIf="statistics$ | async as statistics"
+>
+  <statistic-item
+    *ngFor="let statistic of statistics"
+    [result]="statistic"
+  ></statistic-item>
+</div>

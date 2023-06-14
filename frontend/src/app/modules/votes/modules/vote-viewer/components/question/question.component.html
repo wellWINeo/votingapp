@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutGap="0.5rem">
+  <span>{{ text }}</span>
+  <ng-container *ngIf="multiple; else singleChoice">
+    <p *ngFor="let option of options">
+      <mat-checkbox
+        (change)="onCheckboxChange($event)"
+        [value]="option.id"
+        [disabled]="disabled"
+        [checked]="isChecked(option.id)"
+      >
+        {{ option.value }}
+      </mat-checkbox>
+    </p>
+  </ng-container>
+  <ng-template #singleChoice>
+    <mat-radio-group
+      fxLayout="column"
+      [(ngModel)]="selectedValue"
+      (ngModelChange)="onSingleChoiceChange()"
+      [disabled]="disabled"
+    >
+      <mat-radio-button *ngFor="let option of options" [value]="option.id">
+        {{ option.value }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </ng-template>
+</div>

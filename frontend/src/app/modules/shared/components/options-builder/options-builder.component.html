@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" fxFlex="1 0 auto">
+  <mat-label>Options</mat-label>
+  <mat-chip-grid #optionsGrid>
+    <mat-chip-row *ngFor="let chip of chips" (removed)="onRemove(chip)">
+      {{ chip }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+  </mat-chip-grid>
+  <input
+    placeholder="Add option..."
+    [matChipInputFor]="optionsGrid"
+    (matChipInputTokenEnd)="onAdd($event)"
+  />
+  <mat-error *ngIf="chips.length < 2">
+    At least 2 options must be provided
+  </mat-error>
+</mat-form-field>

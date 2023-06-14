@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="column" fxLayoutGap="5px">
+    <span>{{ result.questionText }}</span>
+    <ngx-charts-pie-chart
+      [view]="[700, 400]"
+      [results]="statistics"
+    ></ngx-charts-pie-chart>
+  </div>
+  <div fxLayout="column" fxLayoutGap="1rem">
+    <div class="results-list">
+      <ng-container *ngIf="!!result.answers?.length; else emptyAnswers">
+        <ng-container *ngFor="let answer of result.answers">
+          <div fxLayout="row" fxLayoutGap="1rem">
+            <div>{{ answer.login ?? "anonymous" }}:</div>
+            <div>{{ answer.values | join : "," }}</div>
+          </div>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </ng-container>
+      <ng-template #emptyAnswers>
+        <div fxLayoutAlign="center center">
+          No answers or confidential mode hides it
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

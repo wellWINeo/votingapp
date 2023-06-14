@@ -1,0 +1,44 @@
+<div fxLayout="column" fxGap="1rem" [formGroup]="form" class="container">
+  <div fxLayout="column" fxGap="0.2rem">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <h1>Create new voting form</h1>
+      <button mat-flat-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" />
+      <mat-error *ngIf="form.get('title')?.errors">Title is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea rows="4" matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <access-mode-selector formControlName="accessMode"></access-mode-selector>
+  </div>
+
+  <div formArrayName="questions">
+    <div *ngFor="let question of questions.controls; index as i">
+      <mat-divider></mat-divider>
+      <div
+        class="question-item"
+        fxLayout="row"
+        fxLayoutAlign="space-between stretch"
+        fxLayoutGap="5px"
+      >
+        <question-builder [formControl]="question"></question-builder>
+        <div
+          *ngIf="questions.length > 1"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          matRipple
+          (click)="removeQuestion(i)"
+        >
+          <mat-icon color="warn">delete</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button mat-flat-button (click)="addQuestion()">Add question</button>
+</div>

@@ -1,0 +1,26 @@
+:host {
+  height: 100%;
+  padding: 1rem;
+
+  .create-button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .container {
+    display: flex;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: row wrap;
+    gap: 0.75rem;
+
+    .card {
+      flex: 1 0 auto;
+      padding: 0.75rem;
+      min-width: 200px;
+      height: 200px;
+      aspect-ratio: 1 / 1;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<div class="container">
+  <div
+    matRipple
+    class="mat-elevation-z2 card"
+    *ngFor="let vote of votes$ | async"
+    [routerLink]="
+      showAll
+        ? ['/', 'votes', 'view', vote.id]
+        : ['/', 'results', 'view', vote.id]
+    "
+  >
+    <h3>{{ vote.title }}</h3>
+    <span>{{ vote.description }}</span>
+  </div>
+</div>
+
+<a mat-fab routerLink="/votes/create" class="create-button">
+  <mat-icon>add</mat-icon>
+</a>

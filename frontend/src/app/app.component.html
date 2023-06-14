@@ -1,0 +1,15 @@
+<mat-toolbar
+  color="primary"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+>
+  <span>Voting</span>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+    <button mat-button routerLink="/">Главная</button>
+    <button mat-button routerLink="/votes/list/my">Созданные формы</button>
+    <button mat-button routerLink="/votes/list/results">Заполненные формы</button>
+  </div>
+</mat-toolbar>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

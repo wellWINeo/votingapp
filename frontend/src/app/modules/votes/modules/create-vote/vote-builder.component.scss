@@ -1,0 +1,14 @@
+@import '@angular/material/theming';
+
+.container {
+  padding: 1rem;
+
+  .question-item {
+    flex-grow: 1;
+    margin-top: 15px;
+
+    question-builder {
+      flex-grow: 1;
+    }
+  }
+}
