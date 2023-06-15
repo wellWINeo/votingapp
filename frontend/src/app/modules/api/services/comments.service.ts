@@ -3,6 +3,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { BehaviorSubject } from 'rxjs';
 import { VoteFormComment } from '../models/comments/vote-form-comment';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CommentsService {
@@ -18,7 +19,7 @@ export class CommentsService {
   public async start(): Promise<void> {
     this.connection = new HubConnectionBuilder()
       .withAutomaticReconnect()
-      .withUrl('http://localhost:5002/ws/comments', {
+      .withUrl(environment.hubUrl, {
         accessTokenFactory: () => this.authService.getAccessToken(),
       })
       .build();
