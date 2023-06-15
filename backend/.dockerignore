@@ -1,0 +1,5 @@
+global.json
+**/obj/*
+**/bin/*
+VotingApp.sln.DotSettings.user
+.idea
