@@ -16,4 +16,5 @@ RUN dotnet publish -c release -o /app --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview
 WORKDIR /app
 COPY --from=build /app ./
-ENTRYPOINT ["dotnet", "VotingApp.Web.dll"]
+COPY ./entrypoint.sh .
+ENTRYPOINT ["./entrypoint.sh"]

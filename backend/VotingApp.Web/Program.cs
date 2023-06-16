@@ -1,23 +1,25 @@
 using FastEndpoints.Swagger;
 using Keycloak.AuthServices.Authentication;
+using VotingApp.Web.Core.Configuration;
 using VotingApp.Web.Extensions;
 using VotingApp.Web.Features.Comments;
 
 var builder = WebApplication.CreateBuilder(args);
 
+/*
 var keycloakOptions = builder.Configuration
     .GetSection("Keycloak")
     .Get<KeycloakAuthenticationOptions>()
     .OrThrow(new Exception("Cannot read Keycloak options"));
+*/
 
+builder.Configuration.AddEnvironmentVariables(prefix: "VotingApp__");
 builder.Services.AddVotingAuthentication(builder.Configuration, "/ws");
 
 builder.Services
-    .AddDatabase(
-        builder.Configuration
-            .GetConnectionString("VotingDb")
-            .OrThrow(new Exception("Connection string is null"))
-    )
+    .AddDatabase(VotingDatabaseOptions
+        .Create(builder.Configuration)
+        .GetConnectionString())
 #if !ALLOW_ANONYMOUS
     //.AddKeycloak(keycloakOptions)
 #endif
