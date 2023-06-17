@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build and push
+    name: Build and push DB
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,7 +41,7 @@ jobs:
         name: Build and push to local registry
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: "infra/database"
           push: true
           tags: ${{ vars.CONTAINER_REGISTRY }}/votingapp/db:${{ steps.versioner.outputs.version }},${{ vars.CONTAINER_REGISTRY }}/votingapp/db:latest
           cache-from: type=gha

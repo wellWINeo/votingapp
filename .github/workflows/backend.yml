@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build and push
+    name: Build and push Backend
     runs-on: ubuntu-latest
     defaults:
       run:
