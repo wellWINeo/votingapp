@@ -8,6 +8,8 @@ services:
     restart: always
     networks:
       - VotingAppNetwork
+    volumes:
+      - "votingapp-data:/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD_FILE=/run/secrets/PostgresPassword
