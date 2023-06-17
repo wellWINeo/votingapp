@@ -41,7 +41,7 @@ jobs:
         name: Build and push to local registry
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: "backend"
           push: true
           tags: ${{ vars.CONTAINER_REGISTRY }}/votingapp/backend:${{ steps.versioner.outputs.version }},${{ vars.CONTAINER_REGISTRY }}/votingapp/backend:latest
           cache-from: type=gha
