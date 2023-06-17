@@ -9,13 +9,13 @@ jobs:
   build:
     name: Build and push
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "infra/keycloak"
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Move to keycloak project
-        run: cd infra/keycloak
       -
         name: Get version
         id: versioner

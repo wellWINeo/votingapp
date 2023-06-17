@@ -9,13 +9,13 @@ jobs:
   build:
     name: Build and push
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "frontend"
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Move to frontend project
-        run: cd frontend
       -
         name: Get version
         id: versioner
