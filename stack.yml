@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   db:
-    image: votingapp/db:latest
+    image: registry.dev-1.uspenskiy.su:443/votingapp/db:latest
     build: ./infra/database/Dockerfile
     hostname: db
     restart: always
@@ -23,7 +23,7 @@ services:
       - PostgresVotingAppPassword
 
   keycloak:
-    image: votingapp/keycloak:latest
+    image: registry.dev-1.uspenskiy.su:443/votingapp/keycloak:latest
     build: ./infra/keycloak/Dockerfile
     hostname: keycloak
     restart: always
@@ -46,7 +46,7 @@ services:
       - PostgresPassword
 
   frontend:
-    image: votingapp/frontend:latest
+    image: registry.dev-1.uspenskiy.su:443/votingapp/frontend:latest
     build: ./frontend/Dockerfile
     hostname: frontend
     restart: always
@@ -59,7 +59,7 @@ services:
       - BACKEND_PORT=7003
 
   backend:
-    image: votingapp/backend:latest
+    image: registry.dev-1.uspenskiy.su:443/votingapp/backend:latest
     build: ./backend/Dockerfile
     hostname: backend
     restart: always
