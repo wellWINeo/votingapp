@@ -43,6 +43,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ vars.CONTAINER_REGISTRY }}/votingapp/keycloak:${{ steps.parser.outputs.version }},${{ vars.CONTAINER_REGISTRY }}/votingapp/keycloak:latest
+          tags: ${{ vars.CONTAINER_REGISTRY }}/votingapp/keycloak:${{ steps.versioner.outputs.version }},${{ vars.CONTAINER_REGISTRY }}/votingapp/keycloak:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max

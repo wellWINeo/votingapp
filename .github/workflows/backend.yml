@@ -43,6 +43,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ vars.CONTAINER_REGISTRY }}/votingapp/backend:${{ steps.parser.outputs.version }},${{ vars.CONTAINER_REGISTRY }}/votingapp/backend:latest
+          tags: ${{ vars.CONTAINER_REGISTRY }}/votingapp/backend:${{ steps.versioner.outputs.version }},${{ vars.CONTAINER_REGISTRY }}/votingapp/backend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
